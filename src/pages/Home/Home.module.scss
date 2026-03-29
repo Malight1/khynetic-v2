@@ -1,0 +1,700 @@
+/* ═══ HOME ═══ */
+.home { overflow: hidden; }
+
+/* ═══ SECTION LABEL (reused pattern) ═══ */
+.sectionLabel {
+  @include section-label;
+}
+.labelLine {
+  width: 30px;
+  height: 1px;
+  background: $electric-blue;
+  display: inline-block;
+}
+
+/* ═══ HERO ═══ */
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute;
+  inset: -15%;
+  z-index: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 70%;
+    animation: kenburns 25s ease-in-out infinite alternate;
+  }
+}
+
+.heroGradient {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba($bg, 0.7) 0%,
+      rgba($deep-blue, 0.2) 35%,
+      rgba($deep-blue, 0.2) 50%,
+      rgba($bg, 0.6) 75%,
+      $bg 100%
+    );
+}
+
+/* Hero label */
+.heroLabel {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  font-family: $font-body;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(246, 251, 253, 0.4);
+
+  @include mobile {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.heroLabelLine {
+  width: 30px;
+  height: 1px;
+  background: $electric-blue;
+  display: inline-block;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 2rem;
+
+  h1 {
+    font-family: $font-display;
+    font-size: clamp(2rem, 5.5vw, 4.2rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.12;
+    letter-spacing: 0.02em;
+
+    em {
+      @include italic-accent;
+      font-size: 1em;
+    }
+  }
+}
+
+.heroTagline {
+  position: relative;
+  z-index: 2;
+  margin-top: 1.8rem;
+  max-width: 480px;
+  text-align: center;
+  font-family: $font-body;
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(246, 251, 253, 0.45);
+  padding: 0 2rem;
+
+  @include mobile {
+    font-size: 0.82rem;
+    margin-top: 1.2rem;
+  }
+}
+
+/* Scroll indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+
+  @include mobile {
+    bottom: 1.5rem;
+  }
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, $electric-blue);
+  display: block;
+}
+
+.scrollLabel {
+  font-family: $font-body;
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(246, 251, 253, 0.3);
+}
+
+/* ═══ MARQUEE ═══ */
+.marquee {
+  overflow: hidden;
+  padding: 1.2rem 0;
+  border-top: 1px solid $border;
+  border-bottom: 1px solid $border;
+  background: rgba(4, 4, 26, 0.5);
+}
+
+.marqueeTrack {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.marqueeItem {
+  font-family: $font-display;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(246, 251, 253, 0.2);
+  flex-shrink: 0;
+  padding-right: 0;
+}
+
+/* ═══ ABOUT ═══ */
+.about {
+  padding: $section-pad $section-pad-x;
+  background: radial-gradient(ellipse at 70% 50%, rgba($deep-blue, 0.08) 0%, transparent 70%);
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4rem;
+  max-width: $max-width;
+  margin: 0 auto;
+  align-items: center;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.aboutText {
+  h2 {
+    @include heading-lg;
+    margin-bottom: 1.5rem;
+
+    em {
+      @include italic-accent;
+      font-size: 1em;
+    }
+  }
+
+  p {
+    @include body-text;
+    margin-bottom: 1rem;
+  }
+
+  .btn-outline {
+    margin-top: 1rem;
+  }
+}
+
+.aboutImage {
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(130, 219, 255, 0.08);
+    pointer-events: none;
+  }
+
+  img {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    transition: transform 0.8s $ease-out;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    @include tablet { height: 400px; }
+    @include mobile { height: 300px; }
+  }
+}
+
+/* ═══ SHOWCASE (text over full art) ═══ */
+.showcase {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  @include mobile { height: 60vh; }
+}
+
+.showcaseImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.showcaseOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba($bg, 0.3) 0%,
+    rgba($deep-blue, 0.5) 50%,
+    rgba($bg, 0.7) 100%
+  );
+}
+
+.showcaseContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 650px;
+  padding: 0 2rem;
+
+  h2 {
+    @include heading-lg;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  p {
+    @include body-text;
+    font-size: 1.05rem;
+  }
+}
+
+/* ═══ STATS ═══ */
+.stats {
+  padding: 5rem $section-pad-x;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 50%, rgba($deep-blue, 0.12) 0%, transparent 60%);
+}
+
+.statsContent {
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+.statsGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.statNumber {
+  font-family: $font-display;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: $electric-blue;
+  line-height: 1;
+  display: inline;
+}
+
+.statSuffix {
+  font-family: $font-display;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  color: $electric-blue;
+  line-height: 1;
+  display: inline;
+  margin-left: 0.1em;
+}
+
+.statItem {
+  .statNumber, .statSuffix {
+    display: inline;
+  }
+
+  /* Wrap number and suffix on one line */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.statLabel {
+  font-family: $font-body;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: $text-muted;
+  margin-top: 0.3rem;
+  width: 100%;
+  text-align: center;
+}
+
+.statDivider {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, $border, transparent);
+  flex-shrink: 0;
+
+  @include mobile {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, $border, transparent);
+  }
+}
+
+/* ═══ SHOWREEL ═══ */
+.reel {
+  padding: $section-pad $section-pad-x 0;
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+.reelHeader {
+  margin-bottom: 2rem;
+
+  h2 {
+    @include heading-lg;
+    text-transform: uppercase;
+
+    em {
+      @include italic-accent;
+      font-size: 1em;
+    }
+  }
+}
+
+.reelCard {
+  position: relative;
+  aspect-ratio: 21/9;
+  overflow: hidden;
+  cursor: pointer;
+
+  @include mobile { aspect-ratio: 16/9; }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s $ease-out;
+  }
+
+  &:hover img {
+    transform: scale(1.04);
+  }
+}
+
+.reelOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4,4,26,0.4);
+  transition: background 0.4s;
+
+  .reelCard:hover & { background: rgba(4,4,26,0.55); }
+
+  h3 {
+    font-family: $font-display;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 1rem;
+  }
+}
+
+.playBtn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(246,251,253,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(246,251,253,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  transition: all 0.4s $ease-out;
+
+  svg { margin-left: 3px; }
+
+  .reelCard:hover & {
+    background: $electric-blue;
+    color: $black;
+    transform: scale(1.1);
+    border-color: transparent;
+  }
+
+  @include mobile {
+    width: 56px;
+    height: 56px;
+    svg { width: 20px; height: 20px; }
+  }
+}
+
+/* ═══ MODAL ═══ */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  background: rgba(4,4,26,0.95);
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+
+  @include mobile { padding: 0.5rem; padding-top: 3.5rem; }
+}
+
+.modalInner {
+  width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(130,219,255,0.08);
+
+  iframe { display: block; }
+}
+
+.modalClose {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 1px solid rgba(246,251,253,0.15);
+  color: $white;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover { border-color: $electric-blue; color: $electric-blue; }
+}
+
+/* ═══ FULL-BLEED IMAGE ═══ */
+.fullBleed {
+  width: 100%;
+  overflow: hidden;
+  margin: $section-pad 0;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(to bottom, transparent, $bg);
+    pointer-events: none;
+  }
+
+  img {
+    width: 100%;
+    height: 65vh;
+    object-fit: cover;
+
+    @include mobile { height: 45vh; }
+  }
+}
+
+/* ═══ CHAPTERS ═══ */
+.chapters {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $section-pad-x;
+}
+
+.chaptersHeader {
+  margin-bottom: 3rem;
+
+  h2 {
+    @include heading-lg;
+    text-transform: uppercase;
+
+    em {
+      @include italic-accent;
+      font-size: 1em;
+    }
+  }
+}
+
+.chapter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 450px;
+  border-bottom: 1px solid $border;
+
+  &.reversed {
+    direction: rtl;
+    > * { direction: ltr; }
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    &.reversed { direction: ltr; }
+  }
+}
+
+.chapterImage {
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 350px;
+    transition: transform 0.8s $ease-out;
+  }
+
+  &:hover img { transform: scale(1.04); }
+
+  @include tablet { img { min-height: 280px; } }
+}
+
+.chapterText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3.5rem;
+
+  @include tablet { padding: 2.5rem 1.5rem; }
+
+  h3 {
+    font-family: $font-display;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    @include body-text;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .btn-outline { align-self: flex-start; }
+}
+
+.chapterNum {
+  font-family: $font-serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: $electric-blue;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.chapterTag {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $text-muted;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* ═══ CTA ═══ */
+.cta {
+  position: relative;
+  padding: 8rem $section-pad-x;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  margin-top: $section-pad;
+
+  @include mobile { padding: 5rem 1.5rem; }
+}
+
+.ctaBg {
+  position: absolute;
+  inset: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.ctaOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba($bg, 0.88);
+}
+
+.ctaContent {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+
+  h2 {
+    @include heading-lg;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    em { @include italic-accent; font-size: 1em; }
+  }
+
+  p {
+    @include body-text;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.ctaBtns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @include mobile { flex-direction: column; }
+}

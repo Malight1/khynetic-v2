@@ -1,0 +1,30 @@
+$deep-blue: #080E6E;
+$electric-blue: #82DBFF;
+$white: #F6FBFD;
+$black: #020202;
+$bg: #04041a;
+$bg-card: #0a0a2e;
+$border: rgba(130, 219, 255, 0.07);
+$border-hover: rgba(130, 219, 255, 0.2);
+$text-primary: $white;
+$text-secondary: rgba(246, 251, 253, 0.5);
+$text-muted: rgba(246, 251, 253, 0.25);
+
+$font-display: 'Syne', sans-serif;
+$font-serif: 'Playfair Display', serif;
+$font-body: 'Outfit', sans-serif;
+
+$section-pad: clamp(4rem, 8vw, 8rem);
+$section-pad-x: clamp(1.5rem, 4vw, 3rem);
+$max-width: 1300px;
+
+$ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-desktop: 1200px;
+
+$z-nav: 1000;
+$z-modal: 2000;
+$z-transition: 9000;

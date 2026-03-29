@@ -1,0 +1,26 @@
+.footer {
+  position: relative; overflow: hidden;
+  border-top: 1px solid $border; padding: 5rem $section-pad-x 2rem;
+}
+.watermark {
+  position: absolute; top: -0.5rem; left: 50%; transform: translateX(-50%);
+  font-family: $font-display; font-size: 12vw; font-weight: 800;
+  color: rgba(130,219,255,0.02); pointer-events: none; white-space: nowrap;
+}
+.inner {
+  display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem;
+  max-width: $max-width; margin: 0 auto; padding-bottom: 3rem; border-bottom: 1px solid $border;
+  @include tablet { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+.tagline { @include body-text; max-width: 320px; margin-bottom: 1.5rem; }
+.email, .location { font-size: 0.85rem; color: $text-muted; margin-bottom: 0.3rem; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; @include mobile { grid-template-columns: 1fr; } }
+.col {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  h4 { font-family: $font-display; font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: $electric-blue; font-weight: 600; margin-bottom: 0.5rem; }
+  a { font-size: 0.85rem; color: $text-secondary; text-decoration: none; transition: color 0.3s; &:hover { color: $white; } }
+}
+.bottom {
+  max-width: $max-width; margin: 0 auto; padding-top: 2rem;
+  font-size: 0.72rem; color: rgba(246,251,253,0.15);
+}

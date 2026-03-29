@@ -1,0 +1,54 @@
+@mixin mobile { @media (max-width: $bp-mobile) { @content; } }
+@mixin tablet { @media (max-width: $bp-tablet) { @content; } }
+@mixin desktop { @media (min-width: $bp-desktop) { @content; } }
+
+@mixin container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $section-pad-x;
+}
+
+@mixin heading-xl {
+  font-family: $font-display;
+  font-size: clamp(2rem, 5.5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: $white;
+}
+
+@mixin heading-lg {
+  font-family: $font-display;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+@mixin body-text {
+  font-family: $font-body;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: $text-secondary;
+}
+
+@mixin italic-accent {
+  font-family: $font-serif;
+  font-style: italic;
+  color: $electric-blue;
+  font-weight: 400;
+  text-transform: none;
+}
+
+@mixin section-label {
+  font-family: $font-body;
+  font-size: 0.68rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: $electric-blue;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  &::before { content: ''; width: 30px; height: 1px; background: $electric-blue; }
+}

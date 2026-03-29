@@ -1,0 +1,96 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: rgba(130,219,255,0.12) $bg; }
+
+body {
+  font-family: $font-body;
+  background: $bg;
+  color: $white;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: $font-body; cursor: pointer; }
+img { display: block; max-width: 100%; }
+
+::selection { background: rgba(130,219,255,0.25); color: $white; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: $bg; }
+::-webkit-scrollbar-thumb { background: rgba(130,219,255,0.1); border-radius: 2px; }
+
+/* ═══ BUTTONS ═══ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2.5rem;
+  background: $electric-blue;
+  color: $black;
+  border: none;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: all 0.35s $ease-out;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+
+  &:hover {
+    box-shadow: 0 8px 45px rgba(130,219,255,0.35);
+    transform: translateY(-2px);
+
+    &::after { opacity: 1; }
+  }
+
+  @include mobile { width: 100%; text-align: center; }
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.2rem;
+  background: transparent;
+  color: $white;
+  border: 1px solid rgba(246,251,253,0.12);
+  font-weight: 400;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: all 0.35s $ease-out;
+  text-decoration: none;
+  position: relative;
+
+  &:hover {
+    border-color: $electric-blue;
+    color: $electric-blue;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(130,219,255,0.1);
+  }
+
+  @include mobile { width: 100%; text-align: center; }
+}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-33.333%); } }
+@keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.08); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

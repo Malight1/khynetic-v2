@@ -1,0 +1,214 @@
+/* ═══ NAVBAR ═══ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: $z-nav;
+  padding: 1.25rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: all 0.5s $ease-out;
+  background: transparent;
+
+  @include mobile {
+    padding: 1rem 1.2rem;
+  }
+
+  &.scrolled {
+    padding: 0.8rem 2.5rem;
+    background: rgba(4, 4, 26, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(130, 219, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+
+    @include mobile {
+      padding: 0.7rem 1.2rem;
+    }
+  }
+}
+
+/* ── Logo ── */
+.logo {
+  color: $white;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  z-index: $z-nav + 1;
+  text-decoration: none;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.logoImg {
+  width: 36px;
+  height: auto;
+  filter: brightness(0) invert(1);
+  transition: transform 0.4s $ease-out;
+
+  .logo:hover & {
+    transform: scale(1.08);
+  }
+
+  @include mobile {
+    width: 28px;
+  }
+}
+
+.logoText {
+  font-family: $font-display;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: $white;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+/* ── Desktop Nav Links ── */
+.desktopLinks {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.navLink {
+  font-family: $font-body;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(246, 251, 253, 0.55);
+  text-decoration: none;
+  position: relative;
+  padding: 0.35rem 0;
+  transition: color 0.35s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: $electric-blue;
+    transition: width 0.35s $ease-out;
+  }
+
+  &:hover {
+    color: $white;
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &.activeLink {
+    color: $electric-blue;
+
+    &::after {
+      width: 100%;
+      background: $electric-blue;
+    }
+  }
+}
+
+/* ── Right Side ── */
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: $z-nav + 1;
+}
+
+.navCta {
+  font-family: $font-body;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $black;
+  background: $electric-blue;
+  padding: 0.6rem 1.6rem;
+  text-decoration: none;
+  transition: all 0.35s $ease-out;
+
+  &:hover {
+    box-shadow: 0 4px 25px rgba(130, 219, 255, 0.35);
+    transform: translateY(-1px);
+  }
+
+  @include tablet {
+    display: none;
+  }
+}
+
+/* ── Hamburger ── */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  z-index: $z-nav + 1;
+
+  span {
+    width: 26px;
+    height: 1.5px;
+    background: $white;
+    transition: all 0.35s $ease-out;
+    display: block;
+  }
+
+  &.open {
+    span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+  }
+
+  @include tablet {
+    display: flex;
+  }
+}
+
+/* ═══ MOBILE OVERLAY ═══ */
+.overlay {
+  position: fixed; inset: 0; z-index: $z-nav - 1;
+  background: $deep-blue;
+  background-image: url('/images/brand/deep-blue-gradient.jpg');
+  background-size: cover; background-position: center;
+  display: flex; flex-direction: column; justify-content: center; padding: 0 10vw;
+  @include mobile { padding: 0 2rem; }
+}
+
+.overlayContent { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.overlayLink {
+  display: flex; align-items: baseline; gap: 1.5rem;
+  font-family: $font-display; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800;
+  color: rgba(246,251,253,0.4); text-decoration: none;
+  padding: 0.6rem 0; border-bottom: 1px solid rgba(246,251,253,0.06);
+  transition: color 0.3s, padding-left 0.3s;
+  &:hover, &.active { color: $white; padding-left: 1rem; }
+  &.active { color: $electric-blue; }
+}
+
+.overlayNum { font-family: $font-body; font-size: 0.7rem; font-weight: 300; letter-spacing: 0.1em; color: $text-muted; min-width: 2rem; }
+
+.overlayFooter {
+  position: absolute; bottom: 3rem; left: 10vw;
+  display: flex; gap: 2rem; font-size: 0.8rem; color: $text-muted;
+  @include mobile { left: 2rem; bottom: 2rem; flex-direction: column; gap: 0.3rem; }
+}

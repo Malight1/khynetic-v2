@@ -1,0 +1,70 @@
+.label { @include section-label; }
+.portfolio { padding-top: 10rem; @include mobile { padding-top: 7rem; } }
+
+.hero {
+  padding: 2rem $section-pad-x 4rem; max-width: $max-width; margin: 0 auto;
+  h1 { @include heading-xl; em { @include italic-accent; } }
+}
+.heroSub { @include body-text; max-width: 500px; margin-top: 1rem; }
+
+/* Editorial project sections */
+.projectList { max-width: $max-width; margin: 0 auto; }
+.project {
+  display: grid; grid-template-columns: 1.2fr 1fr; min-height: 480px; border-bottom: 1px solid $border;
+  &.reversed { grid-template-columns: 1fr 1.2fr; direction: rtl; > * { direction: ltr; } }
+  @include tablet { grid-template-columns: 1fr; &.reversed { direction: ltr; grid-template-columns: 1fr; } }
+}
+.projectImage {
+  overflow: hidden; cursor: pointer;
+  img { width: 100%; height: 100%; object-fit: cover; min-height: 400px; transition: transform 0.8s $ease-out; @include tablet { min-height: 300px; } @include mobile { min-height: 240px; } }
+  &:hover img { transform: scale(1.04); }
+}
+.projectInfo {
+  display: flex; flex-direction: column; justify-content: center; padding: 3.5rem;
+  @include tablet { padding: 2.5rem 1.5rem; }
+  h2 { font-family: $font-display; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 0.5rem; }
+  p { @include body-text; font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .btn-outline { align-self: flex-start; }
+}
+.projectChapter { font-family: $font-serif; font-style: italic; font-size: 0.9rem; color: $electric-blue; margin-bottom: 0.5rem; display: block; }
+.projectTag { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: $text-muted; margin-bottom: 1.2rem; display: block; }
+
+/* CTA */
+.cta {
+  display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap;
+  padding: 4rem $section-pad-x; border-top: 1px solid $border;
+  p { font-family: $font-display; font-size: 1.1rem; font-weight: 600; color: $text-secondary; }
+  @include mobile { flex-direction: column; text-align: center; }
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed; inset: 0; z-index: $z-modal; background: rgba(4,4,26,0.95); backdrop-filter: blur(15px);
+  display: flex; align-items: center; justify-content: center; padding: 2rem;
+  @include mobile { padding: 0.5rem; padding-top: 3rem; }
+}
+.lbContent {
+  max-width: 950px; width: 100%; background: $bg-card; overflow: hidden;
+  img { width: 100%; height: auto; max-height: 55vh; object-fit: cover; }
+}
+.lbInfo {
+  padding: 2rem; @include mobile { padding: 1.2rem; }
+  h2 { font-family: $font-display; font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; @include mobile { font-size: 1.2rem; } }
+  p { @include body-text; font-size: 0.92rem; }
+}
+.lbCounter { font-size: 0.7rem; color: $text-muted; letter-spacing: 0.15em; display: block; margin-bottom: 0.5rem; }
+.lbNav {
+  display: flex; gap: 0.5rem; padding: 0 2rem 1.5rem; @include mobile { padding: 0 1.2rem 1rem; justify-content: center; }
+  button {
+    width: 44px; height: 44px; background: none; border: 1px solid $border; color: $white;
+    font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer;
+    transition: all 0.3s; &:hover:not(:disabled) { border-color: $electric-blue; color: $electric-blue; }
+    &:disabled { opacity: 0.2; cursor: default; }
+  }
+}
+.lbClose {
+  position: absolute; top: 1.5rem; right: 1.5rem; width: 44px; height: 44px;
+  background: none; border: 1px solid rgba(246,251,253,0.15); color: $white;
+  font-size: 1.1rem; display: flex; align-items: center; justify-content: center; cursor: pointer;
+  &:hover { border-color: $electric-blue; color: $electric-blue; }
+}
